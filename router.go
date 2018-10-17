@@ -83,7 +83,7 @@ func createRouter() *mux.Router {
 		router.Methods(route.Method).
 			Path(route.Pattern).
 			Name(route.Name).
-			Handler(LogMiddleware(AuthMiddleware(route.Handler)))
+			Handler(LogMiddleware(AuthMiddleware(errorMiddleware(route.Handler))))
 	}
 
 	return router
