@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"net/http"
-	"picasion/model"
+	"github.com/picasion/model"
 
 	"github.com/gorilla/mux"
 )
@@ -69,7 +69,7 @@ func turn(w http.ResponseWriter, r *http.Request) error {
 	var state model.State
 	err := decoder.Decode(&state)
 	if err != nil {
-		json.NewEncoder(w).Encode("Invalid payload" + err.Error())
+		return err
 	}
 
 	json.NewEncoder(w).Encode(state)
