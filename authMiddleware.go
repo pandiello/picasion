@@ -4,7 +4,7 @@ import(
 	"net/http"
 )
 
-func AuthMiddleware(h http.Handler) http.Handler {
+func authMiddleware(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
 		w.Header().Set("WWW-Authenticate", `Basic realm="Restricted"`)
